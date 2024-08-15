@@ -1,0 +1,9 @@
+- name: Configure data disks
+  hosts: linux
+
+  roles:
+    - datadisk-n01650374
+    - profile-n01650374
+    - user-n01650374
+    - webserver-n01650374
+

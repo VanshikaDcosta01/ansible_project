@@ -1,0 +1,26 @@
+[linux]
+n01650374-c-vm1.ukwest.cloudapp.azure.com ansible_user=n01650374vd ansible_ssh_private_key_file=/Users/N01650374/.ssh/id_rsa ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+n01650374-c-vm2.ukwest.cloudapp.azure.com ansible_user=n01650374vd ansible_ssh_private_key_file=/Users/N01650374/.ssh/id_rsa ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+n01650374-c-vm3.ukwest.cloudapp.azure.com ansible_user=n01650374vd ansible_ssh_private_key_file=/Users/N01650374/.ssh/id_rsa ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+[linux:vars]
+ansible_become=true
+ansible_become_method=sudo
+ansible_become_user=root
+ansible_become_ask_pass=false
+
+[windows]
+n01650374-w-vm1.ukwest.cloudapp.azure.com
+ansible_become=false
+
+[os:children]
+linux
+windows
+
+[windows:vars]
+ansible_user=winadm
+ansible_password=N@1650374-vanshika
+ansible_connection=winrm
+ansible_port=5985
+ansible_winrm_transport=ntlm
+ansible_winrm_server_cert_validation=ignore
